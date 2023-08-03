@@ -12,6 +12,13 @@ app.use(cors({
     optionsSuccessStatus: 200,
     credentials: true
 }));
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontenddd-production.up.railway.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
