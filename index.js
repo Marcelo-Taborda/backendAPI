@@ -8,7 +8,7 @@ import userRoutes from "./routes/userRoutes.js";
 const app = express();
 
 app.use(cors({
-    origin: 'https://frontenddd-production.up.railway.app/',
+    origin: 'https://frontenddd-production.up.railway.app',
     optionsSuccessStatus: 200,
     credentials: true
 }));
