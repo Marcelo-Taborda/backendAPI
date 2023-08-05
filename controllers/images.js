@@ -49,7 +49,7 @@ export const createImage = async (req, res) => {
 
   try {
     await sharp(req.file.path)
-      .resize(420, null)
+      .resize(236, null)
       .toFile(resizedImagePath);
 
     await newImage.save();
