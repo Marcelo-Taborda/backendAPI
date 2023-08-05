@@ -58,5 +58,18 @@ router.post('/favorites', async (req, res) => {
       res.status(500).json({ message: 'Error al eliminar la imagen' });
     }
   });
+  
+  /* obtener una sola imagen con el id */
+  router.get('/:imageId', async (req, res) => {
+    try {
+      const imageId = req.params.imageId;
+      const image = await Image.findById(imageId);
+
+      res.json(image);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error al obtener la imagen' });
+    }
+  });
 
 export default router;
