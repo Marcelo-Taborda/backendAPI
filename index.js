@@ -8,11 +8,11 @@ import userRoutes from "./routes/userRoutes.js";
 const app = express();
 
 app.use(cors({
-  origin: ['https://frontenddd-production.up.railway.app', 'https://backendauth-production.up.railway.app'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
+    origin: ['https://frontenddd-production.up.railway.app', 'https://backendauth-production.up.railway.app', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

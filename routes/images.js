@@ -3,6 +3,8 @@ import multer from "multer";
 import { createImage, getImages } from "../controllers/images.js";
 import { nanoid } from 'nanoid';
 import Image from '../models/images.js';
+/*  */
+import fs from 'fs';
 
 const router = express.Router();
 
@@ -50,8 +52,26 @@ router.post('/favorites', async (req, res) => {
   router.delete('/:imageId', async (req, res) => {
     try {
       const imageId = req.params.imageId;
+      const image = await Image.findById(imageId);
+      const thumbPath = `uploads/${image.image.thumbnail.split('/').pop()}`;
+      const imagePath = `uploads/${image.image.original.split('/').pop()}`;
+      fs.unlink(thumbPath, (err) => {
+        if (err) {
+          console.error('Error al eliminar la imagen:', err);
+          return;
+        }
+        console.log('Imagen T eliminada exitosamente.');
+      });
+      fs.unlink(imagePath, (err) => {
+        if (err) {
+          console.error('Error al eliminar la imagen:', err);
+          return;
+        }
+        console.log('Imagen O eliminada exitosamente.');
+      });
+      
       await Image.findByIdAndDelete(imageId);
-  
+      
       res.json({ message: 'Imagen eliminada exitosamente' });
     } catch (error) {
       console.error(error);
