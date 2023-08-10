@@ -8,7 +8,7 @@ import userRoutes from "./routes/userRoutes.js";
 const app = express();
 
 app.use(cors({
-    origin: ['https://frontenddd-production.up.railway.app', 'https://backendauth-production.up.railway.app', 'http://localhost:5173'],
+    origin: ['https://frontenddd-production.up.railway.app', 'https://backendauth-production.up.railway.app', 'http://localhost:5173', 'http://vps-3532642-x.dattaweb.com/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
